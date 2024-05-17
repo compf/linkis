@@ -18,49 +18,28 @@
 package org.apache.linkis.monitor.jobhistory.entity;
 
 import org.apache.linkis.monitor.jobhistory.QueryUtils;
-
 import java.util.Date;
 
 public class JobHistory {
 
   private Long id;
 
-  private String jobReqId;
 
-  private String submitUser;
 
-  private String executeUser;
 
-  private String source;
 
-  private String labels;
 
-  private String params;
 
-  private String progress;
 
-  private String status;
 
-  private String logPath;
 
-  private Integer errorCode;
 
-  private String errorDesc;
 
-  private Date createdTime;
 
-  private Date updatedTime;
 
   private String updateTimeMills;
 
-  private String instances;
-
-  private String metrics;
-
-  private String engineType;
-
-  private String executionCode;
-
+  private JobHistoryInfo jobHistoryInfo; 
   private String observeInfo;
 
   public Long getId() {

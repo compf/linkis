@@ -17,60 +17,25 @@
 
 package org.apache.linkis.jobhistory.entity;
 
-import org.apache.linkis.jobhistory.util.QueryUtils;
-
-import java.util.Date;
-
+import org.apache.linkis.monitor.jobhistory.entity.JobHistoryInfo;
+import org.apache.linkis.monitor.jobhistory.entity.JobHistoryInfo;
 public class JobHistory {
 
   private Long id;
-
-  /*
-  ExecID
-   */
-  private String jobReqId;
-
-  private String submitUser;
-
-  private String executeUser;
-
-  private String source;
-
-  private String labels;
-
-  private String params;
-
-  private String progress;
-
-  private String status;
-
-  private String logPath;
-
-  private Integer errorCode;
-
-  private String errorDesc;
-
-  private Date createdTime;
-
-  private Date updatedTime;
-
-  private String updateTimeMills;
-
-  private String instances;
-
-  private String metrics;
-
-  private String engineType;
-
-  /*
-  Original execution code
-   */
-  private String executionCode;
-
-  /** result location */
+  private JobHistoryInfo jobHistoryInfo; // New field to hold the common fields
   private String resultLocation;
-
   private String observeInfo;
+
+  // Constructor with JobHistoryInfo parameter
+  public JobHistory(
+      Long id, JobHistoryInfo jobHistoryInfo, String resultLocation, String observeInfo) {
+    this.id = id;
+    this.jobHistoryInfo = jobHistoryInfo;
+    this.resultLocation = resultLocation;
+    this.observeInfo = observeInfo;
+  }
+
+  // Getters and Setters for the fields
 
   public Long getId() {
     return id;
@@ -80,144 +45,12 @@ public class JobHistory {
     this.id = id;
   }
 
-  public String getJobReqId() {
-    return jobReqId;
+  public JobHistoryInfo getJobHistoryInfo() {
+    return jobHistoryInfo;
   }
 
-  public void setJobReqId(String jobReqId) {
-    this.jobReqId = jobReqId;
-  }
-
-  public String getSubmitUser() {
-    return submitUser;
-  }
-
-  public void setSubmitUser(String submitUser) {
-    this.submitUser = submitUser;
-  }
-
-  public String getExecuteUser() {
-    return executeUser;
-  }
-
-  public void setExecuteUser(String executeUser) {
-    this.executeUser = executeUser;
-  }
-
-  public String getSource() {
-    return source;
-  }
-
-  public void setSource(String source) {
-    this.source = source;
-  }
-
-  public String getLabels() {
-    return labels;
-  }
-
-  public void setLabels(String labels) {
-    this.labels = labels;
-  }
-
-  public String getParams() {
-    return params;
-  }
-
-  public void setParams(String params) {
-    this.params = params;
-  }
-
-  public String getProgress() {
-    return progress;
-  }
-
-  public void setProgress(String progress) {
-    this.progress = progress;
-  }
-
-  public String getStatus() {
-    return status;
-  }
-
-  public void setStatus(String status) {
-    this.status = status;
-  }
-
-  public String getLogPath() {
-    return logPath;
-  }
-
-  public void setLogPath(String logPath) {
-    this.logPath = logPath;
-  }
-
-  public Integer getErrorCode() {
-    return errorCode;
-  }
-
-  public void setErrorCode(Integer errorCode) {
-    this.errorCode = errorCode;
-  }
-
-  public String getErrorDesc() {
-    return errorDesc;
-  }
-
-  public void setErrorDesc(String errorDesc) {
-    this.errorDesc = errorDesc;
-  }
-
-  public Date getCreatedTime() {
-    return createdTime;
-  }
-
-  public void setCreatedTime(Date createdTime) {
-    this.createdTime = createdTime;
-  }
-
-  public Date getUpdatedTime() {
-    return updatedTime;
-  }
-
-  public void setUpdatedTime(Date updatedTime) {
-    this.updatedTime = updatedTime;
-  }
-
-  public String getInstances() {
-    return instances;
-  }
-
-  public void setInstances(String instances) {
-    this.instances = instances;
-  }
-
-  public String getMetrics() {
-    return metrics;
-  }
-
-  public void setMetrics(String metrics) {
-    this.metrics = metrics;
-  }
-
-  public String getEngineType() {
-    return engineType;
-  }
-
-  public void setEngineType(String engineType) {
-    this.engineType = engineType;
-  }
-
-  public String getExecutionCode() {
-    return executionCode;
-  }
-
-  public void setExecutionCode(String executionCode) {
-    this.executionCode = executionCode;
-  }
-
-  public String getUpdateTimeMills() {
-    return QueryUtils.dateToString(getUpdatedTime());
+  public void setJobHistoryInfo(JobHistoryInfo jobHistoryInfo) {
+    this.jobHistoryInfo = jobHistoryInfo;
   }
 
   public String getResultLocation() {
@@ -241,11 +74,10 @@ public class JobHistory {
     return "JobHistory{"
         + "id="
         + id
-        + ", jobReqId='"
-        + jobReqId
-        + '\''
-        + ", labels='"
-        + labels
+        + ", jobHistoryInfo="
+        + jobHistoryInfo
+        + ", resultLocation='"
+        + resultLocation
         + '\''
         + '}';
   }
